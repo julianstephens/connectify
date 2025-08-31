@@ -1,0 +1,21 @@
+# Go
+/bin/
+/vendor/
+/*.exe
+/*.log
+/*.test
+
+# Go modules
+go.sum
+
+# Node
+node_modules/
+dist/
+build/
+
+# env
+.env*
+
+# IDEs
+.vscode/
+.idea/

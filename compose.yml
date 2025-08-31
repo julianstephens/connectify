@@ -1,0 +1,33 @@
+services:
+  # api:
+  #   build: ./server
+  #   ports:
+  #     - "8080:8080"
+  #   environment:
+  #     - SERVER_PORT=8080
+  #   volumes:
+  #     - ./server:/app
+  #   command: ["./api"] # in dev you may run `go run` instead
+  # web:
+  #   build: ./client
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     - CHOKIDAR_USEPOLLING=true
+  #   volumes:
+  #     - ./client:/app
+  #   depends_on:
+  #     - api
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: "dev"
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: "connectify"
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./server:/app
+volumes:
+ pgdata:
